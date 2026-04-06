@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class InventoryController : MonoBehaviour
     public GameObject slotPrefab;
     public int slotCount;
 
-    void Start()
+    void Awake()
     {
         itemDictionary = FindFirstObjectByType<ItemDictionary>();
     }
@@ -29,7 +30,11 @@ public class InventoryController : MonoBehaviour
                 }
 
                 GameObject newItem = Instantiate(prefab, slotTransform);
-                newItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                RectTransform rt = newItem.GetComponent<RectTransform>();
+                rt.anchoredPosition = Vector2.zero;
+                rt.localScale = Vector3.one;
+                rt.localPosition = new Vector3(0, 0, 0);
+                
                 slot.currentItem = newItem;
                 return true;
             }
@@ -45,13 +50,12 @@ public class InventoryController : MonoBehaviour
 
         foreach (Transform slotTransform in inventoryPanel.transform)
         {
-            if (slotTransform.childCount > 0)
+            Slot slot = slotTransform.GetComponent<Slot>();
+            if (slot != null && slot.currentItem != null)
             {
-                Slot slot = slotTransform.GetComponent<Slot>();
-                if (slot.currentItem != null)
+                Item item = slot.currentItem.GetComponent<Item>();
+                if (item != null)
                 {
-                    Item item = slot.currentItem.GetComponent<Item>();
-
                     invData.Add(new InventorySaveData
                     {
                         itemID = item.ID,
@@ -66,9 +70,9 @@ public class InventoryController : MonoBehaviour
 
     public void SetInventoryItems(List<InventorySaveData> inventorySaveData)
     {
-        foreach (Transform child in inventoryPanel.transform)
+        for (int i = inventoryPanel.transform.childCount - 1; i >= 0; i--)
         {
-            Destroy(child.gameObject);
+            DestroyImmediate(inventoryPanel.transform.GetChild(i).gameObject);
         }
 
         for (int i = 0; i < slotCount; i++)
@@ -78,18 +82,29 @@ public class InventoryController : MonoBehaviour
 
         foreach (InventorySaveData data in inventorySaveData)
         {
-            if (data.slotIndex < slotCount)
+            if (data.slotIndex < inventoryPanel.transform.childCount)
             {
-                Slot slot = inventoryPanel.transform.GetChild(data.slotIndex).GetComponent<Slot>();
+                Transform slotTransform = inventoryPanel.transform.GetChild(data.slotIndex);
+                Slot slot = slotTransform.GetComponent<Slot>();
                 GameObject itemPrefab = itemDictionary.GetItemPrefab(data.itemID);
 
-                if (itemPrefab != null)
+                if (itemPrefab != null && slot != null)
                 {
-                    GameObject item = Instantiate(itemPrefab, slot.transform);
-                    item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                    GameObject item = Instantiate(itemPrefab, slotTransform);
+                    RectTransform rt = item.GetComponent<RectTransform>();
+                    rt.anchoredPosition = Vector2.zero;
+                    rt.localScale = Vector3.one;
+                    rt.localPosition = new Vector3(0, 0, 0);
+                    
                     slot.currentItem = item;
                 }
             }
+        }
+
+        if (inventoryPanel.TryGetComponent<LayoutGroup>(out LayoutGroup layout))
+        {
+            Canvas.ForceUpdateCanvases();
+            LayoutRebuilder.ForceRebuildLayoutImmediate(inventoryPanel.GetComponent<RectTransform>());
         }
     }
 }
