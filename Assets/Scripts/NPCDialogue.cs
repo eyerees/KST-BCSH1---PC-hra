@@ -10,10 +10,19 @@ public class NPCDialogue : ScriptableObject
     public Sprite npcPotrait;
     public string[] dialogueLines;
     public bool[] autoProgressLines;
+    public bool[] endProgressLines;
     public float autoProgressDelay = 1.5f;
     public float typingSpeed = 0.05f;
     public AudioClip voiceSound;
     public float voicePitch = 1f;
     
+    public DialogueChoice[] choices;
+}
 
+[System.Serializable]
+public class DialogueChoice
+{
+    public int dialogueIndex;
+    public string[] choices;
+    public int[] nextDialogueIndexes;
 }

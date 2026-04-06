@@ -15,10 +15,23 @@ MonoBehaviour:
   npcName: Old Skellie
   npcPotrait: {fileID: 0}
   dialogueLines:
-  - How's it going, boy?
-  - You drank a lot of milk as a kid, am I right?
-  autoProgressLines: 0100
+  - Careful where you step, Groon. The dust here has a long memory.
+  - I've lost a Glass Echo near the fallen pillar. It hums a tune that keeps the
+    silence at bay.
+  - Would you find it for me? Even in a world of decay, some things are worth keeping.
+  - "Good. It\u2019s a small thing, but it\u2019s mine. Use your senses; the ruins
+    like to hide what\u2019s precious."
+  - Suit yourself. The silence is heavy today - don't let it swallow you whole while
+    you're standing there.
+  autoProgressLines: 0100000000
+  endProgressLines: 0000000101
   autoProgressDelay: 1.5
   typingSpeed: 0.05
   voiceSound: {fileID: 8300000, guid: a73b2be821136ce4e8379bfa7f4f563e, type: 3}
   voicePitch: 1
+  choices:
+  - dialogueIndex: 2
+    choices:
+    - Yes
+    - No
+    nextDialogueIndexes: 0300000004000000
