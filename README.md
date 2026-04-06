@@ -2,7 +2,7 @@
 
 Tento repozitář obsahuje rozpracovaný školní projekt ve formátu 2D RPG z ptačí perspektivy, vytvořený v enginu **Unity** pomocí jazyka **C#**.
 
-### 📅 Aktuální stav k: 21. 03. 2026
+### 📅 Aktuální stav k: 01. 04. 2026
 
 Dnes byly do projektu úspěšně implementovány klíčové prvky pro interakci s herním světem:
 
