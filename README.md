@@ -36,13 +36,13 @@ Dnes byly do projektu úspěšně implementovány klíčové prvky pro interakci
 
 ### 🎮 Ovládání a testování
 
-1.  Otevřete projekt v **Unity Editoru**.
-2.  Spusťte hlavní scénu pomocí tlačítka **Play**.
-3.  **Pohyb:** Použijte klávesy `WASD` nebo `šipky`.
-4.  **Útok:** Stiskněte `Space` pro aktivaci útoku.
-5.  **UI Menu:** Stiskněte `Tab` pro zobrazení inventáře a mapy apod.
+* 1.  Otevřete projekt v **Unity Editoru**.
+* 2.  Spusťte hlavní scénu pomocí tlačítka **Play**.
+* 3.  **Pohyb:** Použijte klávesy `WASD` nebo `šipky`.
+* 4.  **Útok:** Stiskněte `Space` pro aktivaci útoku.
+* 5.  **UI Menu:** Stiskněte `Tab` pro zobrazení inventáře a mapy apod.
 
 ---
 
-**Autor:** Astrid Hendrychová 
-**Projekt:** BCSH1 – Volba tématu semestrální práce – (b) Jednoduchá počítačová hra
+* **Autor:** Astrid Hendrychová 
+* **Projekt:** BCSH1 – Volba tématu semestrální práce – (b) Jednoduchá počítačová hra
