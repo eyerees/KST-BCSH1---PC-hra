@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class SoundEffectManager : MonoBehaviour
 {
-    // The public Instance allows other scripts to call SoundEffectManager.Instance
     public static SoundEffectManager Instance { get; private set; }
 
     private AudioSource audioSource;
@@ -18,7 +17,6 @@ public class SoundEffectManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            // Keeps the manager alive when changing scenes
             DontDestroyOnLoad(gameObject); 
 
             AudioSource[] audioSources = GetComponents<AudioSource>();
@@ -35,7 +33,6 @@ public class SoundEffectManager : MonoBehaviour
 
     void Start()
     {
-        // Load the previously saved volume or default to 0.5f
         float savedVolume = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
 
         if (sfxSlider != null)
@@ -80,7 +77,6 @@ public class SoundEffectManager : MonoBehaviour
         Instance.randomPitchAudioSource.volume = volume;
         Instance.voiceAudioSource.volume = volume;
         
-        // Save the volume setting so it persists across game restarts
         PlayerPrefs.SetFloat("SFXVolume", volume);
         PlayerPrefs.Save();
     }

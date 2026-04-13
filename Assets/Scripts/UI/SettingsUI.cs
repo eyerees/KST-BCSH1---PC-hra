@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; // Required for scene switching
+using UnityEngine.SceneManagement;
 
 public class SettingsUI : MonoBehaviour
 {

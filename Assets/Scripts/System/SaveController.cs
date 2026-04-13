@@ -20,7 +20,6 @@ public class SaveController : MonoBehaviour
     private void IntializeComponents()
     {
         saveLocation = Path.Combine(Application.persistentDataPath, "saveData.json");
-        //C:\Users\Ira\AppData\LocalLow\DefaultCompany\Bramble
         inventoryController = Object.FindFirstObjectByType<InventoryController>();
         hotbarController = Object.FindFirstObjectByType<HotbarController>();
         chests = Object.FindObjectsByType<Chest>(FindObjectsSortMode.None);
@@ -39,6 +38,7 @@ public class SaveController : MonoBehaviour
         data.inventorySaveData = inventoryController.GetInventoryItems();
         data.hotbarSaveData = hotbarController.GetHotbarItems();
         data.chestSaveData = GetChestsState();
+        data.questProgressData = QuestController.Instance.activateQuests;
 
         var confiner = Object.FindFirstObjectByType<CinemachineConfiner2D>();
         if (confiner != null && confiner.BoundingShape2D != null)
@@ -99,6 +99,7 @@ public class SaveController : MonoBehaviour
 
             LoadChestsState(data.chestSaveData);
 
+            QuestController.Instance.LoadProgress(data.questProgressData);
             Debug.Log("Game Loaded");
         }
         else

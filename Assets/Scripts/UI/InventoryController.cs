@@ -1,4 +1,6 @@
 using UnityEngine;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
@@ -10,9 +12,18 @@ public class InventoryController : MonoBehaviour
     public GameObject slotPrefab;
     public int slotCount;
 
+    Dictionary<int, int> itemsCountCache = new();
+    public event Action onInventoryChanged;
+    public static InventoryController Instance;
+
     void Awake()
     {
+        Instance = this;
         itemDictionary = FindFirstObjectByType<ItemDictionary>();
+        if (inventoryPanel.transform.childCount == 0 && slotCount > 0)
+        {
+            for (int i = 0; i < slotCount; i++) Instantiate(slotPrefab, inventoryPanel.transform);
+        }
     }
 
     public bool AddItem(Item worldItem)
@@ -34,8 +45,9 @@ public class InventoryController : MonoBehaviour
                 rt.anchoredPosition = Vector2.zero;
                 rt.localScale = Vector3.one;
                 rt.localPosition = new Vector3(0, 0, 0);
-                
+
                 slot.currentItem = newItem;
+                RebuildItemCounts();
                 return true;
             }
         }
@@ -43,6 +55,24 @@ public class InventoryController : MonoBehaviour
         Debug.Log("Inventory is full!");
         return false;
     }
+
+    public void RebuildItemCounts()
+    {
+        itemsCountCache.Clear();
+
+        Slot[] slots = inventoryPanel.GetComponentsInChildren<Slot>();
+        foreach (var slot in slots)
+        {
+            if (slot.currentItem != null && slot.currentItem.TryGetComponent(out Item item))
+            {
+                itemsCountCache[item.ID] = itemsCountCache.GetValueOrDefault(item.ID, 0) + item.quantity;
+            }
+        }
+        onInventoryChanged?.Invoke();
+    }
+
+    public Dictionary<int, int> GetItemCounts() => itemsCountCache;
+
 
     public List<InventorySaveData> GetInventoryItems()
     {
@@ -95,7 +125,7 @@ public class InventoryController : MonoBehaviour
                     rt.anchoredPosition = Vector2.zero;
                     rt.localScale = Vector3.one;
                     rt.localPosition = new Vector3(0, 0, 0);
-                    
+
                     slot.currentItem = item;
                 }
             }
@@ -106,5 +136,7 @@ public class InventoryController : MonoBehaviour
             Canvas.ForceUpdateCanvases();
             LayoutRebuilder.ForceRebuildLayoutImmediate(inventoryPanel.GetComponent<RectTransform>());
         }
+        RebuildItemCounts();
     }
+
 }

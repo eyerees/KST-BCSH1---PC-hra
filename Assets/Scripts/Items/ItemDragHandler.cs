@@ -108,5 +108,7 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             Debug.LogWarning("No BounceEffect found on worldPrefab: " + item.worldPrefab.name);
 
         Destroy(gameObject);
+        InventoryController.Instance.RebuildItemCounts();
     }
+
 }

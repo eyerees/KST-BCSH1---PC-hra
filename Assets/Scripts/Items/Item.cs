@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections;           
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
@@ -7,6 +7,7 @@ public class Item : MonoBehaviour
 {
     public int ID;
     public string Name;
+    public int quantity = 1;
 
     public GameObject worldPrefab;
 
@@ -18,7 +19,7 @@ public class Item : MonoBehaviour
     public virtual void PickUp()
     {
         Sprite itemIcon = GetComponent<Image>().sprite;
-        if(ItemPickupUIController.Instance != null)
+        if (ItemPickupUIController.Instance != null)
         {
             ItemPickupUIController.Instance.ShowItemPickupPopup(Name, itemIcon);
         }
