@@ -7,6 +7,12 @@ public class PauseController : MonoBehaviour
     public static void SetPause(bool pause)
     {
         IsGamePaused = pause;
-        
+        Time.timeScale = pause ? 0f : 1f;
+    }
+    
+    public static void ResetPause()
+    {
+        IsGamePaused = false;
+        Time.timeScale = 1f;
     }
 }
