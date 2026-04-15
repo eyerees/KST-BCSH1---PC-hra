@@ -1,4 +1,4 @@
-#Fandango (Unity)
+# Fandango (Unity)
 
 Tento repozitář obsahuje rozpracovaný školní projekt ve formátu 2D RPG z ptačí perspektivy, vytvořený v enginu **Unity** pomocí jazyka **C#**.
 
