@@ -39,6 +39,7 @@ public class SaveController : MonoBehaviour
         data.hotbarSaveData = hotbarController.GetHotbarItems();
         data.chestSaveData = GetChestsState();
         data.questProgressData = QuestController.Instance.activateQuests;
+        data.handinQuestIDs = QuestController.Instance.handinQuestIDs;
 
         var confiner = Object.FindFirstObjectByType<CinemachineConfiner2D>();
         if (confiner != null && confiner.BoundingShape2D != null)
@@ -101,6 +102,7 @@ public class SaveController : MonoBehaviour
 
             QuestController.Instance.LoadProgress(data.questProgressData);
             Debug.Log("Game Loaded");
+            QuestController.Instance.handinQuestIDs = data.handinQuestIDs;
         }
         else
         {

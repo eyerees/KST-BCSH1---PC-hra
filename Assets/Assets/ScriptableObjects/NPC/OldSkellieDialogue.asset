@@ -22,7 +22,7 @@ MonoBehaviour:
   - Good Luck
   - Thank you for your help
   autoProgressLines: 010000000000
-  endProgressLines: 000101010001
+  endProgressLines: 000101010101
   autoProgressDelay: 1.5
   typingSpeed: 0.05
   voiceSound: {fileID: 8300000, guid: a73b2be821136ce4e8379bfa7f4f563e, type: 3}

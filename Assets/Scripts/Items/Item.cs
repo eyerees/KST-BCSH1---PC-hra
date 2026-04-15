@@ -8,21 +8,19 @@ public class Item : MonoBehaviour
     public int ID;
     public string Name;
     public int quantity = 1;
-
     public GameObject worldPrefab;
 
-    public virtual void UseItem()
+    public void RemoveFromStack(int amount)
     {
-        Debug.Log("Using item: " + Name);
+        quantity -= amount;
     }
 
-    public virtual void PickUp()
+    public virtual void UseItem() { Debug.Log("Using item: " + Name); }
+
+    public virtual void ShowPopUp()
     {
-        Sprite itemIcon = GetComponent<Image>().sprite;
+        Sprite itemIcon = GetComponent<SpriteRenderer>()?.sprite;
         if (ItemPickupUIController.Instance != null)
-        {
             ItemPickupUIController.Instance.ShowItemPickupPopup(Name, itemIcon);
-        }
     }
 }
-

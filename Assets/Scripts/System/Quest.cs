@@ -49,6 +49,7 @@ public class Quest : ScriptableObject
     {
         public Quest quest;
         public List<QuestObjective> objectives;
+        public List<QuestReward> rewards = new List<QuestReward>();
 
         public QuestProgress(Quest quest)
         {

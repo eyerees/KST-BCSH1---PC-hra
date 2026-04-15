@@ -41,7 +41,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 22.898176, y: -16.756165}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2297837016645709672
 CanvasRenderer:
@@ -216,6 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   ID: 1
   Name: Health Potion
+  quantity: 1
   worldPrefab: {fileID: 2862748024435920684}
 --- !u!114 &2121441359928982964
 MonoBehaviour:

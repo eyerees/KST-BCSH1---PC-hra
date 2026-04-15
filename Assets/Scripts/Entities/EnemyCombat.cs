@@ -3,14 +3,19 @@ using UnityEngine;
 public class EnemyCombat : MonoBehaviour 
 {
     public int damage = 1;
+    public float attackInterval = 1.0f;
+    private float nextAttackTime;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-
-        if (playerHealth != null)
+        if (collision.gameObject.CompareTag("Player") && Time.time >= nextAttackTime)
         {
-            playerHealth.ChangeHealth(-damage);
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.ChangeHealth(-damage);
+                nextAttackTime = Time.time + attackInterval;
+            }
         }
     }
 }

@@ -4,66 +4,59 @@ using UnityEngine.InputSystem;
 public class PlayerCombat : MonoBehaviour
 {
     private Animator animator;
-    public Transform attackPoint;
+
     public float attackRange = 0.5f;
     public float attackOffset = 0.5f;
-    public LayerMask enemyLayers;
     public int attackDamage = 10;
     public float knockbackForce = 5f;
+    public float attackRate = 2f;
+
+    public LayerMask hitboxLayer;
+
+    private float nextAttackTime = 0f;
     private bool isAttacking = false;
 
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
+    void Start() => animator = GetComponent<Animator>();
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.performed && !isAttacking)
+        if (context.performed && !isAttacking && Time.time >= nextAttackTime)
         {
             float lastX = animator.GetFloat("LastInputX");
             float lastY = animator.GetFloat("LastInputY");
+
             if (lastX == 0f && lastY == 0f) lastY = -1f;
 
             Vector2 attackDirection = new Vector2(lastX, lastY).normalized;
 
-            if (attackPoint != null)
-                attackPoint.localPosition = attackDirection * attackOffset;
-
             animator.SetBool("isAttacking", true);
             isAttacking = true;
+
             PerformHit(attackDirection);
+            nextAttackTime = Time.time + 1f / attackRate;
         }
     }
 
     public void PerformHit(Vector2 attackDirection)
     {
-        if (attackPoint == null) return;
+        Vector2 worldAttackPoint = (Vector2)transform.position + (attackDirection * attackOffset);
 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(
-            attackPoint.position, attackRange, enemyLayers);
-
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(worldAttackPoint, attackRange, hitboxLayer);
         bool hitSomething = false;
 
-        foreach (Collider2D enemy in hitEnemies)
+        foreach (Collider2D hit in hitEnemies)
         {
-            if (enemy.TryGetComponent<EnemyHealth>(out EnemyHealth enemyHealth))
+            EnemyHealth enemyHealth = hit.GetComponentInParent<EnemyHealth>();
+
+            if (enemyHealth != null)
             {
                 enemyHealth.TakeDamage(attackDamage, attackDirection, knockbackForce);
                 hitSomething = true;
             }
         }
 
-        if (hitSomething)
-        {
-            SoundEffectManager.Play("SwordHit", true); 
-        }
-        else
-        {
-            SoundEffectManager.Play("SwordMiss", false);
-        }
+        SoundEffectManager.Play(hitSomething ? "SwordHit" : "SwordMiss", hitSomething);
     }
-    
 
     public void EndAttack()
     {
@@ -71,10 +64,10 @@ public class PlayerCombat : MonoBehaviour
         isAttacking = false;
     }
 
-    void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
-        if (attackPoint == null) return;
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        Vector2 drawPos = (Vector2)transform.position + (Vector2.down * attackOffset);
+        Gizmos.DrawWireSphere(drawPos, attackRange);
     }
 }

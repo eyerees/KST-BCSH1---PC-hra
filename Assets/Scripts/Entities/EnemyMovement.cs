@@ -20,7 +20,6 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        // Don't touch velocity while knockback is active
         if (enemyHealth != null && enemyHealth.IsKnockedBack) return;
 
         if (isChasing && player != null)
