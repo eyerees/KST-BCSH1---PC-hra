@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class MenuController : MonoBehaviour
 {
-    public GameObject menuCanvas;
+    [SerializeField] private GameObject menuCanvas;
 
     void Start()
     {
@@ -14,14 +14,10 @@ public class MenuController : MonoBehaviour
     {
         if (Keyboard.current.tabKey.wasPressedThisFrame)
         {
-            if(!menuCanvas.activeSelf && PauseController.IsGamePaused)
-            {
-                return;
-            }
-            
-            menuCanvas.SetActive(!menuCanvas.activeSelf);
-            PauseController.SetPause(menuCanvas.activeSelf);
+            bool newState = !menuCanvas.activeSelf;
+
+            menuCanvas.SetActive(newState);
+            PauseController.SetPause(newState);
         }
     }
-    
 }

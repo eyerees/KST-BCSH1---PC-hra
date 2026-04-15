@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
-    public GameObject settingsPanel;
+    [SerializeField] private GameObject settingsPanel;
 
     public void StartGame()
     {
@@ -13,17 +13,16 @@ public class MainMenuController : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Quitting...");
         Application.Quit();
     }
 
     public void OpenSettings()
     {
-        if (settingsPanel != null) settingsPanel.SetActive(true);
+        settingsPanel.SetActive(true);
     }
 
     public void CloseSettings()
     {
-        if (settingsPanel != null) settingsPanel.SetActive(false);
+        settingsPanel.SetActive(false);
     }
 }

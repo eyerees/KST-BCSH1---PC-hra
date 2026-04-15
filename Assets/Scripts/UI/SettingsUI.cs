@@ -8,21 +8,21 @@ public class SettingsUI : MonoBehaviour
     [SerializeField] private Button returnToMenuButton;
     [SerializeField] private string mainMenuSceneName = "MainMenu";
 
-    void OnEnable()
+    private void OnEnable()
     {
         if (SoundEffectManager.Instance != null)
         {
             SoundEffectManager.Instance.SetSlider(volumeSlider);
         }
-
+        
         if (returnToMenuButton != null)
         {
-            bool isIngame = SceneManager.GetActiveScene().name != mainMenuSceneName;
-            returnToMenuButton.gameObject.SetActive(isIngame);
+            bool isMainMenu = SceneManager.GetActiveScene().name == mainMenuSceneName;
+            returnToMenuButton.gameObject.SetActive(!isMainMenu);
         }
     }
 
-    void Start()
+    private void Start()
     {
         if (returnToMenuButton != null)
         {
