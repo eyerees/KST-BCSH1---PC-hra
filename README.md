@@ -6,11 +6,12 @@ Tento repozitář obsahuje rozpracovaný školní projekt ve formátu 2D RPG z p
 
 * **Main Menu**
 * **User Interface**
+* **Saving System**
 * **Dialogue System**
 * **Quest System** 
 * **Combat System**
 * **3 Lokace**
-* **SFX**
+* **Sound**
 
 ---
 
@@ -28,7 +29,7 @@ Tento repozitář obsahuje rozpracovaný školní projekt ve formátu 2D RPG z p
 
 ### 📂 Klíčová struktura projektu
 
-* `Assets/Prefabs/`: Obsahuje herní objekty (Enemies, Item, UI).
+* `Assets/Prefabs/`: Obsahuje herní objekty (NPC, Enemy, Item).
 * `Assets/Scripts/`: Logika rozdělená do modulů (Effects, Entities, Interaction, Items, System, UI).
 * `Assets/Tileset/`: Definice prostředí (Ground, Structure, Tree, Wall, etc.).
 * `Assets/ScriptableObjects/`: Data pro NPC a úkoly (Quest).
@@ -43,4 +44,4 @@ Tento repozitář obsahuje rozpracovaný školní projekt ve formátu 2D RPG z p
 ---
 
 * **Autor:** Astrid Hendrychová
-* **Projekt:** BCSH1 – Fandango – Jednoduchá počítačová hra
+* **Projekt:** BCSH1 – Jednoduchá počítačová hra
