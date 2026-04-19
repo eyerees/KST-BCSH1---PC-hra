@@ -3,7 +3,7 @@
 Projekt 2D RPG z ptačí perspektivy vytvořený v enginu Unity.
 
 ## 📅 Stav projektu (k 15. 04. 2026)
-* **Systémy:** Main Menu, UI, Saving, Dialogue, Quest, Combat, Sound.
+* **Systémy:** Hlavní Menu, Uživatelské Rozhraní, Ukládání, Dialog, Systém úkolů, Kombat, Zvuk.
 * **Obsah:** 3 lokace (úrovně).
 * **Režim:** User vs PC (jednoduchá AI nepřátel).
 
@@ -17,7 +17,7 @@ Projekt 2D RPG z ptačí perspektivy vytvořený v enginu Unity.
 | 2 | Skriptování | C# (VS Code) |
 | 3 | Fyzika | Rigidbody2D |
 | 4 | Grafika | 2D Top-Down Sprite Sheet + Tilemap |
-| 5 | Perzistence | Lokální ukládání progresu (Save/Load) |
+| 5 | Perzistence | Lokální ukládání progresu (Save) |
 
 ---
 
@@ -59,7 +59,7 @@ Zde jsou zdokumentovány všechny použité externí zdroje.
 * **Pohyb:** `WASD` nebo šipky.
 * **Útok:** `Space`.
 * **Interakce:** `E`.
-* **Menu (Inv/Mapa/Quest):** `Tab`.
+* **Menu (Profil/Inventář/Mapa/Deník úkolů/Nastavení):** `Tab`.
 
 ---
 
