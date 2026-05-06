@@ -9,6 +9,15 @@ Projekt 2D RPG z ptačí perspektivy vytvořený v enginu Unity.
 
 ---
 
+## 🎮 Ovládání
+
+* **Pohyb:** `WASD` nebo šipky.
+* **Útok:** `Space`.
+* **Interakce:** `E`.
+* **Menu (Profil/Inventář/Mapa/Deník úkolů/Nastavení):** `Tab`.
+
+---
+
 ## 🛠️ Technické specifikace
 
 | # | Kategorie | Detail |
@@ -21,19 +30,19 @@ Projekt 2D RPG z ptačí perspektivy vytvořený v enginu Unity.
 
 ---
 
-## 📍 Lokace
+## 📍 Lokace a Level Design
 
-### 🛖Vesnice
+Každá úroveň je navržena pomocí systému **Unity Tilemap** s důrazem na funkční navigaci (Layer-based Physics) a atmosféru.
 
-<img width="487" height="337" alt="Village" src="https://github.com/user-attachments/assets/d719b557-7a4a-4600-98fe-c028a049ea52" />
+| # | Lokace | Popis a Funkcionalita | Náhled |
+| :--- | :--- | :--- | :--- |
+| **1** | **Vesnice** | **Účel:** Tutorial & Safe Zone.<br>• Interakce s NPC.<br>• Příjem úkolů (Quest System).<br>• Interakce s objekty. | <img src="https://github.com/user-attachments/assets/d719b557-7a4a-4600-98fe-c028a049ea52" width="250" /> |
+| **2** | **Les** | **Účel:** Průzkum & Základní boj.<br>• Implementace nepřátelské AI (Skeletoni). | <img src="https://github.com/user-attachments/assets/28ad0dbe-b33d-4962-a8e5-d50c4289516d" width="250" /> |
+| **3** | **Aréna** | **Účel:** Boss Arena.<br>• Uzavřený prostor pro boss fight.<br>• Implementace variace nepřátele (Boss). | <img src="https://github.com/user-attachments/assets/26150c64-33c4-4463-aea5-e332c7b1cf6a" width="250" /> |
 
-### 🌳Les
-
-<img width="487" height="381" alt="Forest" src="https://github.com/user-attachments/assets/28ad0dbe-b33d-4962-a8e5-d50c4289516d" />
-
-### 💀Aréna
-
-<img width="315" height="307" alt="BossLocation" src="https://github.com/user-attachments/assets/26150c64-33c4-4463-aea5-e332c7b1cf6a" />
+### 🛠️ Technické detaily prostředí
+*   **Collision System:** Využití `Tilemap Collider 2D` v kombinaci s `Composite Collider 2D` pro snížení zátěže fyzikálního enginu.
+*   **Depth Sorting:** Dynamické vykreslování vrstev (`Sorting Layers`), které umožňuje postavě procházet "za" stromy a budovami pro dosažení hloubky ve 2D.
 
 ---
 
@@ -66,16 +75,7 @@ Zde jsou zdokumentovány všechny použité externí zdroje.
 
 | # | Nástroj | Účel | Výsledek/Použití |
 | :--- | :--- | :--- | :--- |
-| 1 | [ChatGPT] | [Scripting] | [Refactoring kódu] |
-
----
-
-## 🎮 Ovládání
-
-* **Pohyb:** `WASD` nebo šipky.
-* **Útok:** `Space`.
-* **Interakce:** `E`.
-* **Menu (Profil/Inventář/Mapa/Deník úkolů/Nastavení):** `Tab`.
+| 1 | ChatGPT | Scripting | Refactoring kódu |
 
 ---
 
