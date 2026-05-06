@@ -21,6 +21,9 @@ Projekt 2D RPG z ptačí perspektivy vytvořený v enginu Unity.
 
 ---
 
+<img width="487" height="337" alt="Village" src="https://github.com/user-attachments/assets/d719b557-7a4a-4600-98fe-c028a049ea52" />
+
+
 ## 📚 Dokumentace assetů a zdrojů
 
 Zde jsou zdokumentovány všechny použité externí zdroje.
