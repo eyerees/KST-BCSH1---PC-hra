@@ -21,8 +21,21 @@ Projekt 2D RPG z ptačí perspektivy vytvořený v enginu Unity.
 
 ---
 
+## 📍 Lokace
+
+### 🛖Vesnice
+
 <img width="487" height="337" alt="Village" src="https://github.com/user-attachments/assets/d719b557-7a4a-4600-98fe-c028a049ea52" />
 
+### 🌳Les
+
+<img width="487" height="381" alt="Forest" src="https://github.com/user-attachments/assets/28ad0dbe-b33d-4962-a8e5-d50c4289516d" />
+
+### 💀Aréna
+
+<img width="315" height="307" alt="BossLocation" src="https://github.com/user-attachments/assets/26150c64-33c4-4463-aea5-e332c7b1cf6a" />
+
+---
 
 ## 📚 Dokumentace assetů a zdrojů
 
