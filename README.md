@@ -41,8 +41,8 @@ Každá úroveň je navržena pomocí systému **Unity Tilemap** s důrazem na f
 | **3** | **Aréna** | **Účel:** Boss Arena.<br>• Uzavřený prostor pro boss fight.<br>• Implementace variace nepřátele (Boss). | <img src="https://github.com/user-attachments/assets/26150c64-33c4-4463-aea5-e332c7b1cf6a" width="250" /> |
 
 ### 🛠️ Technické detaily prostředí
-*   **Collision System:** Využití `Tilemap Collider 2D` v kombinaci s `Composite Collider 2D` pro snížení zátěže fyzikálního enginu.
-*   **Depth Sorting:** Dynamické vykreslování vrstev (`Sorting Layers`), které umožňuje postavě procházet "za" stromy a budovami pro dosažení hloubky ve 2D.
+* **Collision System:** Využití `Tilemap Collider 2D` v kombinaci s `Rigidbody 2D` pro detekci kolizí s prostředím.
+* **Depth Sorting:** Využití `Sorting Layers` v systému Tilemap pro správné vykreslování vrstev prostředí (podlaha, objekty, strop), které umožňuje postavě procházet vizuálně „za" stromy a budovami.
 
 ---
 
