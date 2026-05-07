@@ -75,7 +75,7 @@ Zde jsou zdokumentovány všechny použité externí zdroje.
 
 | # | Nástroj | Účel | Výsledek/Použití |
 | :--- | :--- | :--- | :--- |
-| 1 | ChatGPT | Scripting | Refactoring kódu |
+| 1 | Gemini | Scripting | Debugging C# skriptů |
 
 ---
 
